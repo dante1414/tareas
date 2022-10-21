@@ -1,0 +1,23 @@
+<form action="/editar/{{tarea._id}}" method="post">
+  <div class="container card card-body my-3" style="max-width:800px;background-color: rgb(0, 255, 209); color:black">
+    <div class="row">
+      <div class="col-md-6 offset-md-3 p-3">
+        <hr>
+        <h3 class="text-center">Formulario de Edición</h3>
+        <hr>
+        <label for="exampleFormControlInput1" class="form-label">Tipo de Tarea</label>
+        <input class="form-control" type="text" name="titulo" id="titulo" placeholder="Nombre" value="{{tarea.titulo}}">
+      </div>
+    </div>
+
+    <div class="col-md-6 offset-md-3 my-1 p-3">
+      <label for="exampleFormControlTextarea1" class="form-label">Descripcion de la Actividad</label>
+      <textarea class="form-control" name="descripcion" id="descripcion" cols="30"
+        rows="10">{{tarea.descripcion}}</textarea>
+    </div>
+    <div class="container">
+      <input type="submit" class="btn btn-primary d-block mx-auto" value="Aceptar">
+    </div>
+
+  </div>
+</form>

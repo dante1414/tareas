@@ -1,0 +1,72 @@
+<div class="container my-5 card card-body p-4" style="background-color:rgb(169, 238, 194); color:black">
+  <div class="row">
+    <div class="col col-lg-4">
+      <hr>
+      <h3 class="text-center">Agrega una Tarea</h3>
+      <hr>
+      <div class="mb-3">
+        <form action="/addTareas" method="post">
+          <label for="exampleFormControlInput1" class="form-label">Tipo de Tarea</label>
+          <input type="text" class="form-control position-relative" name="titulo" id="titulo">
+      </div>
+      <div class="mb-4">
+        <label for="exampleFormControlTextarea1" class="form-label">Descripcion de la Actividad</label>
+        <textarea class="form-control position-relative" name="descripcion" id="descripcion" rows="3"></textarea>
+        <div class="container">
+        </div>
+        <div class="container">
+          <input type="submit" class="btn btn-primary my-3 d-block mx-auto" value="Enviar">
+        </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-lg-8 offset-lg-0">
+      <table class="table table-active table-hover">
+        <thead>
+          <tr class="text-center">
+            <th scope="col">Nro.</th>
+            <th scope="col">Titulo</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Operaciones</th>
+          </tr>
+        </thead>
+        <tbody class="w-100px">
+          {{#each tareas}}
+          
+          <tr>
+            <th class="text-center p-3" scope="row">{{@index}}</th>
+            
+
+            {{#if done}}
+
+            <td class="p-3 text-decoration-line-through" style="max-width: 60px; min-width: 60px;">{{titulo}}</td>
+            <td class="p-3 text-decoration-line-through" style="max-width: 100px; min-width: 100px;">{{descripcion}}
+            </td>
+            <td class="p-3" style="max-width: 130px; min-width: 130px;">
+              <a href='/editar/{{_id}}' class="btn btn-warning btn-sm position-relative">Editar</a>
+              <a href='/eliminar/{{_id}}' class="btn btn-danger btn-sm position-relative">Eliminar</a>
+              <a href='/indicar/{{_id}}' class="btn btn-primary btn-sm position-relative">Completo</a>
+            </td>
+
+            {{else}}
+
+            <td class="p-3" style="max-width: 60px; min-width: 60px;">{{titulo}}</td>
+            <td class="p-3" style="max-width: 100px; min-width: 100px;">{{descripcion}}</td>
+            <td style="max-width: 120px; min-width: 120px;">
+              <a href='/editar/{{_id}}' class="btn btn-warning btn-sm position-relative">Editar</a>
+              <a href='/eliminar/{{_id}}' class="btn btn-danger btn-sm position-relative">Eliminar</a>
+              <a href='/indicar/{{_id}}' class="btn btn-outline-primary btn-sm position-relative">Incompleto</a>
+            </td>
+
+            {{/if}}
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+      <div class="container text-danger text-center p2">
+        <h2>{{mensaje}}</h2>
+      </div>
+    </div>
+  </div>
+</div>
